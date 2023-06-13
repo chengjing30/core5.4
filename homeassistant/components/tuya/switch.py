@@ -250,6 +250,85 @@ SWITCHES: dict[str, tuple[SwitchEntityDescription, ...]] = {
             device_class=SwitchDeviceClass.OUTLET,
         ),
     ),
+        # Switch
+    # https://developer.tuya.com/en/docs/iot/s?id=K9gf7o5prgf7s
+    "cjkg": (
+        SwitchEntityDescription(
+            key=DPCode.CHILD_LOCK,
+            name="Child lock",
+            icon="mdi:account-lock",
+            entity_category=EntityCategory.CONFIG,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_1,
+            name="Switch 1",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_2,
+            name="Switch 2",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_3,
+            name="Switch 3",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_4,
+            name="Switch 4",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_5,
+            name="Switch 5",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_6,
+            name="Switch 6",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_7,
+            name="Switch 7",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_8,
+            name="Switch 8",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_USB1,
+            name="USB 1",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_USB2,
+            name="USB 2",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_USB3,
+            name="USB 3",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_USB4,
+            name="USB 4",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_USB5,
+            name="USB 5",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH_USB6,
+            name="USB 6",
+        ),
+        SwitchEntityDescription(
+            key=DPCode.SWITCH,
+            name="Switch",
+            device_class=SwitchDeviceClass.OUTLET,
+        ),
+    ),
     # Air Purifier
     # https://developer.tuya.com/en/docs/iot/f?id=K9gf46h2s6dzm
     "kj": (
