@@ -250,7 +250,7 @@ SWITCHES: dict[str, tuple[SwitchEntityDescription, ...]] = {
             device_class=SwitchDeviceClass.OUTLET,
         ),
     ),
-        # Switch
+        # 场景开关，只同步开关部分，场景部分暂时不同步了。Switch
     # https://developer.tuya.com/en/docs/iot/s?id=K9gf7o5prgf7s
     "cjkg": (
         SwitchEntityDescription(
