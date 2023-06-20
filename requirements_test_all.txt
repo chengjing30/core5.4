@@ -86,7 +86,7 @@ PyRMVtransport==0.3.3
 PySocks==1.7.1
 
 # homeassistant.components.switchbot
-PySwitchbot==0.37.6
+PySwitchbot==0.38.0
 
 # homeassistant.components.syncthru
 PySyncThru==0.7.10
@@ -172,7 +172,7 @@ aioairq==0.2.4
 aioairzone-cloud==0.1.8
 
 # homeassistant.components.airzone
-aioairzone==0.6.3
+aioairzone==0.6.4
 
 # homeassistant.components.ambient_station
 aioambient==2023.04.0
@@ -212,7 +212,7 @@ aioecowitt==2023.5.0
 aioemonitor==1.0.5
 
 # homeassistant.components.esphome
-aioesphomeapi==14.0.0
+aioesphomeapi==14.1.0
 
 # homeassistant.components.flo
 aioflo==2021.11.0
@@ -1988,7 +1988,7 @@ yalexs-ble==2.1.18
 yalexs==1.5.1
 
 # homeassistant.components.yeelight
-yeelight==0.7.10
+yeelight==0.7.11
 
 # homeassistant.components.yolink
 yolink-api==0.2.9
