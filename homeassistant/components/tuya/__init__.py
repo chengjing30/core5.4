@@ -90,6 +90,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         raise ConfigEntryNotReady(response)
 
     tuya_mq = TuyaOpenMQ(api)
+    tuya_mq.setName("tuya_openmq_th")
     tuya_mq.start()
 
     device_ids: set[str] = set()
