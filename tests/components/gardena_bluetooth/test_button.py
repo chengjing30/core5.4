@@ -4,15 +4,13 @@
 from collections.abc import Awaitable, Callable
 from unittest.mock import Mock, call
 
-from gardena_bluetooth.const import Valve
+from gardena_bluetooth.const import Reset
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
+from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN, SERVICE_PRESS
 from homeassistant.const import (
     ATTR_ENTITY_ID,
-    SERVICE_TURN_OFF,
-    SERVICE_TURN_ON,
     Platform,
 )
 from homeassistant.core import HomeAssistant
@@ -25,13 +23,7 @@ from tests.common import MockConfigEntry
 @pytest.fixture
 def mock_switch_chars(mock_read_char_raw):
     """Mock data on device."""
-    mock_read_char_raw[Valve.state.uuid] = b"\x00"
-    mock_read_char_raw[
-        Valve.remaining_open_time.uuid
-    ] = Valve.remaining_open_time.encode(0)
-    mock_read_char_raw[
-        Valve.manual_watering_time.uuid
-    ] = Valve.manual_watering_time.encode(1000)
+    mock_read_char_raw[Reset.factory_reset.uuid] = b"\x00"
     return mock_read_char_raw
 
 
@@ -39,17 +31,16 @@ async def test_setup(
     hass: HomeAssistant,
     snapshot: SnapshotAssertion,
     mock_entry: MockConfigEntry,
-    mock_client: Mock,
     mock_switch_chars: dict[str, bytes],
     scan_step: Callable[[], Awaitable[None]],
 ) -> None:
     """Test setup creates expected entities."""
 
-    entity_id = "switch.mock_title_open"
-    await setup_entry(hass, mock_entry, [Platform.SWITCH])
+    entity_id = "button.mock_title_factory_reset"
+    await setup_entry(hass, mock_entry, [Platform.BUTTON])
     assert hass.states.get(entity_id) == snapshot
 
-    mock_switch_chars[Valve.state.uuid] = b"\x01"
+    mock_switch_chars[Reset.factory_reset.uuid] = b"\x01"
     await scan_step()
     assert hass.states.get(entity_id) == snapshot
 
@@ -62,25 +53,17 @@ async def test_switching(
 ) -> None:
     """Test switching makes correct calls."""
 
-    entity_id = "switch.mock_title_open"
-    await setup_entry(hass, mock_entry, [Platform.SWITCH])
+    entity_id = "button.mock_title_factory_reset"
+    await setup_entry(hass, mock_entry, [Platform.BUTTON])
     assert hass.states.get(entity_id)
 
     await hass.services.async_call(
-        SWITCH_DOMAIN,
-        SERVICE_TURN_ON,
-        {ATTR_ENTITY_ID: entity_id},
-        blocking=True,
-    )
-
-    await hass.services.async_call(
-        SWITCH_DOMAIN,
-        SERVICE_TURN_OFF,
+        BUTTON_DOMAIN,
+        SERVICE_PRESS,
         {ATTR_ENTITY_ID: entity_id},
         blocking=True,
     )
 
     assert mock_client.write_char.mock_calls == [
-        call(Valve.remaining_open_time, 1000),
-        call(Valve.remaining_open_time, 0),
+        call(Reset.factory_reset, True),
     ]
