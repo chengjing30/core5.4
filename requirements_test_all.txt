@@ -1223,7 +1223,7 @@ pydiscovergy==2.0.3
 pydroid-ipcam==2.0.0
 
 # homeassistant.components.duotecno
-pyduotecno==2023.8.0
+pyduotecno==2023.8.1
 
 # homeassistant.components.econet
 pyeconet==0.1.20
@@ -2025,7 +2025,7 @@ youtubeaio==1.1.5
 zamg==0.2.4
 
 # homeassistant.components.zeroconf
-zeroconf==0.71.4
+zeroconf==0.72.0
 
 # homeassistant.components.zeversolar
 zeversolar==0.3.1
